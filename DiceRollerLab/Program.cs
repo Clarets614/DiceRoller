@@ -54,6 +54,7 @@ while (runDiceRoller)
     if (issixsided(sides))
     {
         specialSixOutput(resultdice1, resultdice2);
+        specialSixOutput2(resultdice1, resultdice2);
     }
 
     if (istwentysided(sides))
@@ -146,15 +147,28 @@ static void specialSixOutput(int resultdice1, int resultdice2)
     else if ((resultdice1 + resultdice2) == 3)
     {
         Console.WriteLine( $"You have rolled {resultdice1} and {resultdice2}! That's an Ace Deuce! ");
-        Console.WriteLine($"This roll is a Craps!");
     }
     if ((resultdice1 == 6) && (resultdice2 == 6))
     {
         Console.WriteLine($"You have rolled Box Cars! {resultdice1}-{resultdice2}");
     }
-    else if ((resultdice1 + resultdice2) == 7 || (resultdice1 + resultdice2) == 11)
+
+    else
     {
-        Console.WriteLine($"{resultdice1 + resultdice2}!!! Do you know what this means?");
+        Console.WriteLine("");
+    }
+
+}
+static void specialSixOutput2(int resultdice1, int resultdice2)
+{
+    int dtotal = resultdice1 + resultdice2;
+    if ((dtotal) == 3 || (dtotal == 2) || (dtotal == 12))
+    {
+        Console.WriteLine($"This roll is a Craps!");
+    }
+    else if ((dtotal == 7) || (dtotal == 11))
+    {
+        Console.WriteLine($"{resultdice1 + resultdice2}!!! ");
         Console.WriteLine($"This roll is a Win!");
     }
 
@@ -164,6 +178,7 @@ static void specialSixOutput(int resultdice1, int resultdice2)
     }
 
 }
+
 static bool istwentysided(int sides)
 {
     if (sides == 20)
