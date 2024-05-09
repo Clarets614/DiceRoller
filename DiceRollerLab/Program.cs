@@ -53,10 +53,13 @@ while (runDiceRoller)
 
     if (issixsided(sides))
     {
-
         specialSixOutput(resultdice1, resultdice2);
     }
 
+    if (istwentysided(sides))
+    {
+        specialTwentyOutput(resultdice1, resultdice2);
+    }
 
 
     while (true)
@@ -104,13 +107,13 @@ Console.WriteLine("Thank you for playing! Press any key to exit program.");
 static int RollingtheDice1(int sides)
 {
     Random dice1 = new Random();
-    int randomdice1 = dice1.Next(1,sides);
+    int randomdice1 = dice1.Next(1,sides + 1);
     return randomdice1;
 }
 static int RollingtheDice2(int sides)
 {
     Random dice2 = new Random();
-    int randomdice2 = dice2.Next(1, sides);
+    int randomdice2 = dice2.Next(1, sides + 1);
     return randomdice2;
 }
 
@@ -133,7 +136,7 @@ static bool issixsided(int sides)
         return false;
     }
 }
-
+//6sided die Win method
 static void specialSixOutput(int resultdice1, int resultdice2)
 {   
     if((resultdice1 == 1) && (resultdice2 == 1))
@@ -161,8 +164,28 @@ static void specialSixOutput(int resultdice1, int resultdice2)
     }
 
 }
+static bool istwentysided(int sides)
+{
+    if (sides == 20)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+static void specialTwentyOutput(int resultdice1, int resultdice2)
+{
+    if ((resultdice1 == 20) || (resultdice2 == 20) || (resultdice1 + resultdice2) == 20)
+    {
+        Console.WriteLine($"You have rolled a Crit! {resultdice1}-{resultdice2}");
+    }
+    else
+    {
+        Console.WriteLine("");
+    }
+
+}
 
 
-
-
-//6sided die Win method
